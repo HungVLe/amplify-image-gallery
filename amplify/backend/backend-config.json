@@ -37,5 +37,12 @@
       "dependsOn": [],
       "identifyType": "identifyLabels"
     }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "type": "cicd",
+      "lastPushTimeStamp": "2020-11-28T02:51:59.228Z"
+    }
   }
 }
