@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "imagegallery",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authimagegallery7ca93871",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
