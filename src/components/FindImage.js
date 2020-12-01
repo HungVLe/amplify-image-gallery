@@ -28,7 +28,7 @@ function FindImage(props) {
 
     return (
         <>
-            <form onSubmit={searchPhotos} className="form-inline">
+            <form onSubmit={searchPhotos} className="form-inline" >
                 <div class="input-group">
                     <input
                         type="text"
@@ -40,21 +40,21 @@ function FindImage(props) {
                     />
                     <button className="btn btn-primary" type="submit">
                         Search
-          </button>
+                </button>
                 </div>
             </form>
             <div className="card-list">
-                {pics.map((pic) => (
-                    <div className="card" key={pic.id}>
-                        <img
-                            className="card-image"
-                            alt={pic.alt_description}
-                            src={pic.urls.full}
-                            width="100%"
-                            height="100%"
-                        ></img>
-                    </div>
-                ))}
+                {
+                    pics.map((pic) =>
+                        <div className="card" key={pic.id}>
+                            <img
+                                className="card-image"
+                                alt={pic.alt_description}
+                                src={pic.urls.full}
+                                width="100%"
+                                height="100%"
+                            ></img>
+                        </div>)}
             </div>
         </>
     );

@@ -51,7 +51,7 @@ const Header = (props) => {
           <AmplifySignOut />
         </Navbar>
         <Route path="/" exact component={Home} />
-        <Route path="/login" exact component={Home} />
+        <Route path="/login" component={Home} />
         <Route path="/upload" exact component={Upload} />
         <Route path="/album" exact component={Album} />
         <Route path="/findimage" exact component={Find} />
