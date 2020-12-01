@@ -123,9 +123,9 @@ function Home(props) {
       await getAllImagesToState();
     } else {
       const filter = {
-        tag: {
+        labels: {
           match: {
-            tag: searchLabel,
+            labels: searchLabel,
           },
         },
       };

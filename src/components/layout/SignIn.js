@@ -13,10 +13,10 @@ const SignIn = (props) => {
         <div>
             <Router history={history}>
                 <Navbar color="dark">
-                    <NavbarBrand className="text-white" href="/">Smart Gallery</NavbarBrand>
-                    <NavLink className="text-white" href="/login">Sign in / Sign up</NavLink>
+                    <NavbarBrand className="text-white" href="#">Smart Gallery</NavbarBrand>
+                    <NavLink className="text-white" href="/">Sign in / Sign up</NavLink>
                 </Navbar>
-                <Route path="/login" exact component={Login} />
+                <Route path="/" exact component={Login} />
             </Router>
         </div>
     );
