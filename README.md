@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Smart Gallery
+> Demo can be found at <a href= https://www.trinity-image-gallery.ga/ > this link</a>. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+| University | <a href= http://www.sjsu.edu/ >San Jose State University </a>                                         |
+|------------|-------------------------------------------------------------------------------------------------------|
+| Course     | <a href= http://info.sjsu.edu/web-dbgen/catalog/courses/CMPE281.html >CMPE 281 Cloud Technologies</a> |
+| Professor  | <a href= https://www.linkedin.com/in/sanjaygarje/ >Sanjay Garje </a>                                  |
 
-## Available Scripts
+## Table of contents
+* [General info](#general-info)
+* [Modules](#modules)
+* [Installation](#installation)
+* [Feature List](#feature-list)
+* [Screenshots](#screenshots)
+* [Technologies](#technologies)
+* [Contributors](#contributors)
+* [Status](#status)
 
-In the project directory, you can run:
+## General info
+Smart Gallery uses multiple new technologies to ensure that the users have better control and access to their images. From the architectural diagram above, the application is written in React and hosted on AWS Amplify using graphql. The schema has templates for the image object and its information which are stored in both AWS S3 bucket and DynamoDB respectively.
 
-### `npm start`
+## Modules
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Authentication is essential and a core area of our application development. With AWS Amplify, we have authentication using username and password, in addition to email and SMS notifications for registration so that only authorized users can access their application. Images uploaded to the bucket are segregated by username using IAM users, so that only the users that uploaded the image can see their images in the application, while those with Admin roles can view all the images in the S3 bucket. Images can also be downloaded locally or deleted from the S3 bucket directly from the application in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Smart Labeling using Amazon Rekognition is implemented as functionalities of the project. Since we aim to build a platform like Google Photos for image storage, the labels will be used to search and sort the images. The labels will be linked to the react app using graphql and will be stored in the DynamoDB database. Thus, when a user uploads an image, they can also add labels which can be used to identify similar images in the gallery, which are improved in retrieval performance using  Cloudfront CDN, built into Amplify and Route53.
 
-### `npm test`
+The uploaded images can also be viewed in Album mode, which presents the images in a nice scrolling gallery mode, where images can be rotated and zoomed in. There is also a provided image search using Unsplash API which allows users to search for new images to download and upload to the S3 bucket.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Finally, the application is hosted on Amplify which is complemented by Route53 for custom domain, so that anyone with the URL can access the application.
 
-### `npm run build`
+During the development process, code was hosted on GitHub for CI/CD purposes with regular commits. In the beginning, we cloned from a central repository branch and developed our components, and then merged them back into a central repository branch which we hosted on AWS Amplify.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Pre-Requisites:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For AWS
+* AWS CLI
+* AWS Amplify
+    * Amplify API using GraphQL
+    * Amplify Predictions
+    * Amplify Hosting
+    * Amplify Storage in S3
+    * Amplify Authentication in Cognito
 
-### `npm run eject`
+For Local Configuration
+* Nodejs
+* npm
+* Visual Studio Code IDE
+* <a href= https://unsplash.com/developers>Unsplash Dev project application with access key</a>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Setup
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install all dependencies using `npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Add a .env file in root folder and add following line with API key from Unsplash:
+`REACT_APP_ACCESS_KEY = "Your API KEY"`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Run application by calling `npm start`
+* http://localhost:3000
 
-## Learn More
+## Feature List
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* AWS Amplify Hosting
+* DynamoDB Tables
+* Appsync API with GraphQL
+* AWS Rekognition
+    * Smart Labeling
+    * AWS Polly
+* Wider image search using Unsplash API
+* Amplify Authentication with Cognito
+* Cloudfront CDN 
+* Autoscaling
+* Multi-AZ Redundancy
+* S3 Lifecycle Policy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Screenshots
 
-### Code Splitting
+![](./src/img/Home.PNG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![](./src/img/Album.PNG)
 
-### Analyzing the Bundle Size
+![](./src/img/Search.PNG)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Technologies
+* React and AWS Amplify
 
-### Making a Progressive Web App
+## Contributors
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Team Trinity               | GitHub Repositories                                                     |
+|----------------------------|-------------------------------------------------------------------------|
+| Archana Shokeen(015237378) | https://github.com/archanashokeeniitg/image-library-appsync/tree/phase2 |
+| Eric Cheng(015300506)      | https://github.com/eccx400/image_gallery                                |
+| Hung Le(010306088)         | https://github.com/HungVLe/image-library-appsync                        |
+## Status
+Project is: _Completed_
