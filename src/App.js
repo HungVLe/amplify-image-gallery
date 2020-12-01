@@ -10,7 +10,7 @@ import { AmplifyAuthenticator } from "@aws-amplify/ui-react";
 //components imports
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
-import bg from "./components/layout/Index.png";
+import bg from "./components/layout/Welcome.png";
 
 Amplify.configure(awsExports);
 Amplify.addPluggable(new AmazonAIPredictionsProvider());

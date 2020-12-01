@@ -47,7 +47,7 @@ function ImageGallery(props) {
 
   return (
     <>
-      <div className="card-list">
+      <div className="card-list container">
         {props.images.map((image) => (
           <div className="card" key={image.id}>
             <Card>
