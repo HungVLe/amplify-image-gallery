@@ -1,8 +1,9 @@
 import React, { useEffect} from "react";
-import bg from "./layout/Welcome.png";
+import bg from "./layout/Index.png";
 
 import Footer from "./layout/Footer";
 import Header from "./layout/Header";
+import Login from "./Login";
 
 const Welcome = (props) => {
     useEffect(() => {
@@ -11,7 +12,7 @@ const Welcome = (props) => {
     }, []);
     return (
         <div>
-            <Header user={props.user} />
+            {props.user ? <Header user={props.user} /> : <Login/>}
             <Footer />
         </div>
     );

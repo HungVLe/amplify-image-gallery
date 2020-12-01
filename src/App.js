@@ -31,7 +31,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      {user ? <Welcome user={user}/> : <Index />}
+      <Welcome user={user}/>
     </div>
   );
 }
