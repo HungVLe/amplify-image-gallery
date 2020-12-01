@@ -5,10 +5,12 @@ import './App.css';
 import Amplify, { Auth, Hub } from "aws-amplify";
 import awsExports from "./aws-exports";
 import { AmazonAIPredictionsProvider } from "@aws-amplify/predictions";
+import { AmplifyAuthenticator } from "@aws-amplify/ui-react";
 
 //components imports
-import Index from "./components/Index";
-import Welcome from "./components/Welcome";
+import Footer from "./components/layout/Footer";
+import Header from "./components/layout/Header";
+import bg from "./components/layout/Index.png";
 
 Amplify.configure(awsExports);
 Amplify.addPluggable(new AmazonAIPredictionsProvider());
@@ -16,6 +18,8 @@ Amplify.addPluggable(new AmazonAIPredictionsProvider());
 function App() {
   const [user, setUser] = useState("");
   useEffect(() => {
+    document.body.style.backgroundImage = `url(${bg})`
+    document.body.style.backgroundSize = 'cover'
     //finding and setting loggedin User
     let updateUser = async (authState) => {
       try {
@@ -30,9 +34,12 @@ function App() {
     return () => Hub.remove("auth", updateUser); // cleanup
   }, []);
   return (
-    <div className="App">
-      <Welcome user={user}/>
-    </div>
+    <AmplifyAuthenticator style={{ textAlign: "center" }}>
+      <div className="App">
+        {user ? <Header user={user} /> : null}
+        <Footer />
+      </div>
+    </AmplifyAuthenticator>
   );
 }
 
