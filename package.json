@@ -16,7 +16,9 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "reactstrap": "^8.7.1",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "react-bnb-gallery": "^1.4.4",
+    "unsplash-js": "^6.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

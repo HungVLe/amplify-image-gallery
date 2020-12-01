@@ -49,13 +49,12 @@ function ImageGallery(props) {
                     props.deleteImage(image.id);
                   }}
                 ></i>
-                <a
-                  style={{ textDecoration: "none", color: "inherit" }}
-                  href={image.src}
-                  download="download.png"
-                >
-                  <i className="fa fa-download "></i>
-                </a>
+                <i
+                  className="fa fa-download "
+                  onClick={(event) => {
+                    props.downloadImage(image)
+                  }}
+                ></i>
                 <i
                   className="fa fa-edit pull-right "
                   onClick={(event) => {
@@ -92,7 +91,7 @@ function ImageGallery(props) {
                   <CardText className="img-label">
                     <b>** Labels using Rekognition</b>
                     <br />
-                    {image.lables ? image.lables.join(", ") : ""}
+                    {image.lables.join(", ")}
                   </CardText>
                 </div>
               </div>

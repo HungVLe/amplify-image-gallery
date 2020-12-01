@@ -36,6 +36,11 @@
       "service": "Rekognition",
       "dependsOn": [],
       "identifyType": "identifyLabels"
+    },
+    "transcription4ceb30f0": {
+      "providerPlugin": "awscloudformation",
+      "service": "Transcribe",
+      "convertType": "transcription"
     }
   },
   "hosting": {
