@@ -147,15 +147,17 @@ function Home(props) {
 
   return (
     <div>
-      <div className="row d-flex justify-content-center">
-        <SearchImage searchImage={searchImage} />
-      </div>
-
       {myAlert ? (
         <div id="success-alert" className="alert alert-danger" role="alert">
           Image Deleted successfully!!!
         </div>
       ) : null}
+
+      <div className="row d-flex justify-content-center">
+        <SearchImage searchImage={searchImage} />
+      </div>
+
+      
       <br />
 
       <ImageGallery
