@@ -47,7 +47,7 @@ function ImageGallery(props) {
 
   return (
     <>
-      <div className="card-list">
+      <div className="card-list container">
         {props.images.map((image) => (
           <div className="card" key={image.id}>
             <Card>
@@ -65,7 +65,7 @@ function ImageGallery(props) {
                 <CardTitle tag="h6">
                   <Container>
                     <Row>
-                      <Col xs="6" sm="4">
+                      <Col>
                         <i
                           className="fa fa-trash"
                           style={{
@@ -80,33 +80,18 @@ function ImageGallery(props) {
                           }}
                         ></i>
                       </Col>
-                      <Col xs="6" sm="4">
+                      <Col>
                         <i
                           className="fa fa-download "
                           style={{
                             textDecoration: "none",
                             color: "inherit",
                             display: "flex",
-                            justifyContent: "center",
+                            justifyContent: "flex-end",
                           }}
                           download="download.png"
                           onClick={(event) => {
                             props.downloadImage(image);
-                          }}
-                        ></i>
-                      </Col>
-                      <Col sm="4">
-                        <i
-                          className="fa fa-edit"
-                          style={{
-                            textDecoration: "none",
-                            color: "inherit",
-                            display: "flex",
-                            justifyContent: "flex-end",
-                          }}
-                          onClick={(event) => {
-                            setImageID(image.id);
-                            setToggle(true);
                           }}
                         ></i>
                       </Col>

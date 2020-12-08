@@ -4,6 +4,7 @@ import { createPicture } from "../graphql/mutations";
 import Unsplash, { toJson } from "unsplash-js";
 import Predictions from "@aws-amplify/predictions";
 import awsExports from "../aws-exports";
+
 import "./FindImage.css";
 
 function FindImage(props) {
@@ -22,8 +23,7 @@ function FindImage(props) {
     };
 
     const unsplash = new Unsplash({
-        // accessKey: process.env.REACT_APP_ACCESS_KEY,
-        accessKey: "uInUczpRVpZw67dsJn6gyvt62QuT7dI2ez9ydZadONs",
+        accessKey: process.env.REACT_APP_ACCESS_KEY,
     });
 
     return (
